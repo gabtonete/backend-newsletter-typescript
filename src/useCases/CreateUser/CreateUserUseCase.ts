@@ -1,4 +1,4 @@
-import { User } from "../../entities/User";
+import { UserEntity } from "../../entities/UserEntity";
 import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
@@ -12,12 +12,11 @@ export class CreateUserUseCase {
 
     async execute(data: ICreateUserRequestDTO) {
         const userAlreadyExists = await this.userRepository.findByEmail(data.email);
-
         if(userAlreadyExists) {
             throw new Error('User already exists');
         }
 
-        const user = new User(data);
+        const user = new UserEntity(data.name, data.email, data.password);
 
         await this.userRepository.save(user);
 

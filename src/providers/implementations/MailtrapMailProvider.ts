@@ -2,6 +2,8 @@ import { IMailProvider, IMessage } from "../IMailProvider";
 
 import nodemailer from 'nodemailer';
 import Mail from "nodemailer/lib/mailer";
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 export class MailtrapMailProvider implements IMailProvider {
