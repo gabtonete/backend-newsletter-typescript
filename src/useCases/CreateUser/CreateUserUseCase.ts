@@ -1,4 +1,3 @@
-import { response } from "express";
 import { User } from "../../entities/User";
 import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
