@@ -2,20 +2,20 @@ import { IMailProvider, IMessage } from "../IMailProvider";
 
 import nodemailer from 'nodemailer';
 import Mail from "nodemailer/lib/mailer";
+
 const dotenv = require('dotenv');
 dotenv.config();
 
 
-export class MailtrapMailProvider implements IMailProvider {
+export class GmailMailProvider implements IMailProvider {
     private transporter: Mail;
     
     constructor() {
         this.transporter = nodemailer.createTransport({
-            host: 'smtp.mailtrap.io',
-            port: 2525,
+            service: 'gmail',
             auth: {
-                user: process.env.MAILTRAP_USER,
-                pass: process.env.MAILTRAP_PASS
+                user: process.env.GMAIL_SMTP_USER,
+                pass: process.env.GMAIL_SMTP_PASS
             }
         });
     }
@@ -24,11 +24,11 @@ export class MailtrapMailProvider implements IMailProvider {
         await this.transporter.sendMail({
             to: {
                 name: message.to.name,
-                address: message.to.email
+                address: message.to.address
             },
             from: {
                 name: message.from.name,
-                address: message.from.email
+                address: message.from.address
             },
             subject: message.subject,
             html: message.body

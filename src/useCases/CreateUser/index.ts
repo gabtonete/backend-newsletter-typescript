@@ -1,14 +1,14 @@
-import { MailtrapMailProvider } from "../../providers/implementations/MailtrapMailProvider";
+import { GmailMailProvider } from "../../providers/implementations/GmailMailProvider";
 import { SqLiteUsersRepository } from "../../repositories/implementations/SqLiteUsersRepository";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
-const mailTrapMailProvider = new MailtrapMailProvider();
+const gmailMailProvider = new GmailMailProvider();
 const sqLiteUsersRepository = new SqLiteUsersRepository();
 
 const createUserUseCase = new CreateUserUseCase(
     sqLiteUsersRepository,
-    mailTrapMailProvider
+    gmailMailProvider
 );
 
 const createUserController = new CreateUserController(createUserUseCase);

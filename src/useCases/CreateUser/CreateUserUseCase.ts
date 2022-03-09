@@ -16,21 +16,20 @@ export class CreateUserUseCase {
             throw new Error('User already exists');
         }
 
-        const user = new UserEntity(data.name, data.email, data.password);
-
+        const user = new UserEntity( data.name, data.email, data.password );
         await this.userRepository.save(user);
-
+        
         await this.mailProvider.sendMail({
             to: {
               name: data.name,
-              email: data.email,
+              address: data.email,
             },
             from: {
-              name: 'Equipe do Meu App',
-              email: 'equipe@meuapp.com',
+              name: 'Gabriel Tonete',
+              address: 'gabtonsmtp@gmail.com',
             },
-            subject: 'Seja bem-vindo à plataforma',
-            body: '<p>Você já pode fazer login em nossa plataforma.</p>'
+            subject: 'Welcome to Fake Newsletter!',
+            body: '<a href="https://github.com/gabtonete">Acesse aqui meu github!</a>'
         })
     }
 }

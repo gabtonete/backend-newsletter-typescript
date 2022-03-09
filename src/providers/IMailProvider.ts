@@ -1,5 +1,5 @@
 interface IAddress {
-    email: string;
+    address: string;
     name: string;
   }
   
