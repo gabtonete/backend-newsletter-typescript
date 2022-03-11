@@ -19,14 +19,14 @@ describe("Create user", () => {
 
 
   it("should be able to create a new user", async () => {
-    const userData: ICreateUserRequestDTO = { name: 'usuarioNovo', email: 'novousuario@test.test', password: '123456' }
+    const userData: ICreateUserRequestDTO = { name: 'usuarioNovo', email: 'novousuario@test.test' }
 
     await createUserUseCase.execute(userData);
 
   });
 
   it("should not be able to create an existing user", async () => {
-    const data: ICreateUserRequestDTO = {name:'abc',email:'naoexabgciste@test.test',password:'123456'}
+    const data: ICreateUserRequestDTO = { name:'abc',email:'naoexabgciste@test.test' }
     
     async function received() {
       await createUserUseCase.execute(data);

@@ -4,12 +4,11 @@ export class UserEntity {
     public id?: string;
     public name: string;
     public email: string;
-    public password: string;
+
     
-    constructor(name, email, password ) {
+    constructor(name, email ) {
         this.id = uuid();
         this.name = name;
         this.email = email;
-        this.password = password;
     }
 }

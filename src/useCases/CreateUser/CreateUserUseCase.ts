@@ -16,10 +16,10 @@ export class CreateUserUseCase {
             throw new Error('User already exists');
         }
 
-        const user = new UserEntity( data.name, data.email, data.password );
+        const user = new UserEntity( data.name, data.email );
         await this.userRepository.save(user);
         
-        await this.mailProvider.sendMail({
+        /*await this.mailProvider.sendMail({
             to: {
               name: data.name,
               address: data.email,
@@ -30,6 +30,6 @@ export class CreateUserUseCase {
             },
             subject: 'Welcome to Fake Newsletter!',
             body: '<a href="https://github.com/gabtonete">Acesse aqui meu github!</a>'
-        })
+        })*/
     }
 }

@@ -22,13 +22,13 @@ describe("Create user", () => {
   });
 
   it("should be able to create a new user", async () => {
-    const userData = { name: 'usuarioNovo', email: 'novousuario@test.test', password: '123456' }
+    const userData = { name: 'usuarioNovo', email: 'novousuario@test.test' }
 
     await createUserUseCase.execute(userData);
   });
 
   it("should not be able to create an existing user", async () => {
-    const data = {name:'abc',email:'naoexabgciste@test.test',password:'123456'}
+    const data = { name:'abc', email:'naoexabgciste@test.test' }
     
     async function received() {
       await createUserUseCase.execute(data);
