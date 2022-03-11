@@ -4,12 +4,10 @@ import cors from 'cors';
 
 const app = express();
 
-const allowedOrigins = ['*'];
-
 const options: cors.CorsOptions = {
-  origin: allowedOrigins,
   methods: "*",
-  "optionsSuccessStatus": 200
+  origin: '*',
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(options));
