@@ -6,7 +6,7 @@ const app = express();
 
 const options: cors.CorsOptions = {
   methods: "OPTIONS, POST",
-  origin: "*",
+  origin: "https://frontend-newsletter-nextjs.vercel.app/",
   optionsSuccessStatus: 200
 };
 
