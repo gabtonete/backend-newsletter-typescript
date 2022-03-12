@@ -6,7 +6,7 @@ import cors from 'cors';
 const app = express();
 
 const options : cors.CorsOptions = {
-    origin: ["*"],
+    origin: "*",
     optionsSuccessStatus: 200
 };
 
@@ -16,10 +16,8 @@ app.use(express.json());
 
 app.use(router);
 
-const { PORT }  = process.env;
-
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`)
+app.listen(5000, () => {
+    console.log("Listening on port 5000")
 })
 
 export { app };
