@@ -1,13 +1,13 @@
 import { GmailMailProvider } from "../../providers/implementations/GmailMailProvider";
-import { SqLiteUsersRepository } from "../../repositories/implementations/SqLiteUsersRepository";
+import { PostgresUsersRepository } from "../../repositories/implementations/PostgresUsersRepository";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 const gmailMailProvider = new GmailMailProvider();
-const sqLiteUsersRepository = new SqLiteUsersRepository();
+const postgresUsersRepository = new PostgresUsersRepository();
 
 const createUserUseCase = new CreateUserUseCase(
-    sqLiteUsersRepository,
+    postgresUsersRepository,
     gmailMailProvider
 );
 

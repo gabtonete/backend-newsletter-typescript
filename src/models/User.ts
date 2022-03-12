@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize, synchronize } from '../helpers/SqliteDBHelper';
+import { sequelize, synchronize } from '../helpers/PostgresDBHelper';
 
 export class User extends Model {}
 

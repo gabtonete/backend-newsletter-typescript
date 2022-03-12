@@ -5,8 +5,7 @@ export class UserEntity {
     public name: string;
     public email: string;
 
-    
-    constructor(name, email ) {
+    constructor(name, email) {
         this.id = uuid();
         this.name = name;
         this.email = email;

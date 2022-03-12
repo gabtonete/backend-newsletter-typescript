@@ -1,4 +1,4 @@
-import { InMemoryUsersRepository } from '../../repositories/implementations/InMemoryUsersRepository';
+import { PostgresUsersRepository } from '../../repositories/implementations/PostgresUsersRepository';
 import { GmailMailProvider } from '../../providers/implementations/GmailMailProvider';
 import { CreateUserUseCase } from './CreateUserUseCase';
 import { IMailProvider } from '../../providers/IMailProvider';
@@ -12,7 +12,7 @@ describe("Create user", () => {
   let createUserUseCase: CreateUserUseCase;
 
   beforeAll(() => {
-    usersRepository = new InMemoryUsersRepository();
+    usersRepository = new PostgresUsersRepository();
     mailProvider = new GmailMailProvider();
     createUserUseCase = new CreateUserUseCase(usersRepository, mailProvider);
   });
