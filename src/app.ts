@@ -6,10 +6,8 @@ import cors from 'cors';
 const app = express();
 
 const options : cors.CorsOptions = {
-    origin: ["http://frontend-newsletter-nextjs.vercel.app", "http://localhost:3000"],
-    methods: ['POST'],
-    credentials: true,
-    optionsSuccessStatus: 200,
+    origin: ["*"],
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(options));
