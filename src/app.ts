@@ -10,7 +10,9 @@ const options: cors.CorsOptions = {
   optionsSuccessStatus: 200
 };
 
-app.use(cors());
+app.use((req, resp, next) => {
+  next()
+}, cors({ maxAge: 84600 }))
 
 app.use(express.json());
 
