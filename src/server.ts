@@ -6,7 +6,11 @@ require('dotenv').config({
     path: resolve(__dirname, '..', '.env')
 });
 
-app.use(cors())
+app.use(cors({
+    origin: ['*'],
+    methods: ['*'],
+    optionsSuccessStatus: 200
+}))
 
 const { PORT }  = process.env;
 
