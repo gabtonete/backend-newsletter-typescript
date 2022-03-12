@@ -5,11 +5,14 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors({
-    origin: ['*'],
-    methods: ['*'],
-    optionsSuccessStatus: 200
-}))
+const options : cors.CorsOptions = {
+    origin: ["https://frontend-newsletter-nextjs.vercel.app/", "http://localhost:3000"],
+    methods: ['POST'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(options));
 
 app.use(express.json());
 
