@@ -10,13 +10,11 @@ export class CreateUserUseCase {
         private mailProvider: IMailProvider
     ) {}
 
-
     async execute(data: ICreateUserRequestDTO){
         const userAlreadyExists = await this.userRepository.findByEmail(data.email);
         if(userAlreadyExists) {
-            throw new Error('User already exists');
+            return ('User already exists');
         }
-
         const user = new UserEntity( data.name, data.email );
         await this.userRepository.save(user);
         
