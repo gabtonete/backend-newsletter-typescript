@@ -1,9 +1,10 @@
-
 import express from 'express';
 import { router } from './routes/routes';
-import cors from 'cors';
+import { cors } from './services/cors';
 
 const app = express();
+
+app.use(cors);
 
 app.use(router);
 
