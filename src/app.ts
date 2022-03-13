@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(router);
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 80, () => {
     console.log(`Server is running on 3001`)
 })
 

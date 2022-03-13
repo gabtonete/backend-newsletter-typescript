@@ -16,7 +16,7 @@ const options = {
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(routes_1.router);
-app.listen(3001, () => {
+app.listen(process.env.PORT || 80, () => {
     console.log(`Server is running on 3001`);
 });
 //# sourceMappingURL=app.js.map
