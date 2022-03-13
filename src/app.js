@@ -9,6 +9,10 @@ const routes_1 = require("./routes/routes");
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 exports.app = app;
+const options = {
+    origin: ["*"],
+    methods: "*"
+};
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(routes_1.router);
