@@ -1,4 +1,4 @@
-import { PostgresUsersRepository } from '../../repositories/implementations/PostgresUsersRepository';
+import { InMemoryUsersRepository } from '../../repositories/implementations/InMemoryUsersRepository';
 import { GmailMailProvider } from '../../providers/implementations/GmailMailProvider';
 import { CreateUserUseCase } from './CreateUserUseCase';
 import { IMailProvider } from '../../providers/IMailProvider';
@@ -12,28 +12,27 @@ describe("Create user", () => {
   let createUserUseCase: CreateUserUseCase;
 
   beforeAll(() => {
-    usersRepository = new PostgresUsersRepository();
+    usersRepository = new InMemoryUsersRepository();
     mailProvider = new GmailMailProvider();
     createUserUseCase = new CreateUserUseCase(usersRepository, mailProvider);
   });
 
 
   it("should be able to create a new user", async () => {
-    const userData: ICreateUserRequestDTO = { name: 'usuarioNovo', email: 'novousuario@test.test' }
+    const userData: ICreateUserRequestDTO = { name: 'Novo Usuário', email: 'novousuario@test.test' }
 
-    await createUserUseCase.execute(userData);
+    const result = await createUserUseCase.execute(userData);
 
+    expect(result).toBe(true);
   });
 
   it("should not be able to create an existing user", async () => {
-    const data: ICreateUserRequestDTO = { name:'abc',email:'naoexabgciste@test.test' }
+    const data: ICreateUserRequestDTO = { name:'Usuário Usado', email:'naoexabgciste@test.test' }
     
-    async function received() {
-      await createUserUseCase.execute(data);
-      await createUserUseCase.execute(data)
-    }
+    await createUserUseCase.execute(data);
 
-    expect(received).rejects.toEqual(new Error("User already exists"));
+    await createUserUseCase.execute(data);
 
+    expect(false);
   });
 });
