@@ -4,9 +4,10 @@
     "module": "commonjs",
     "sourceMap": true,                             
     "allowJs": true,                               
-    "esModuleInterop": true,                          
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,            
-    "skipLibCheck": true                                 
+    "skipLibCheck": true,
+    "outDir": "./src/built/"
   },
   "include": [
     "src/**/*.ts"
