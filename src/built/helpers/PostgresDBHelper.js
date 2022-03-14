@@ -11,4 +11,11 @@ const synchronize = async () => {
     await exports.sequelize.sync();
 };
 exports.synchronize = synchronize;
+const five_minutes = 60000 * 5;
+const now = new Date();
+function dropAllSchemas() {
+    exports.sequelize.drop();
+    console.log(`${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} - Deleting schemas...`);
+}
+setInterval(dropAllSchemas, five_minutes);
 //# sourceMappingURL=PostgresDBHelper.js.map

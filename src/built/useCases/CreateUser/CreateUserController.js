@@ -13,11 +13,11 @@ class CreateUserController {
         };
         try {
             const result = await this.createUserUseCase.execute(data);
-            if (result !== 'User already exists') {
-                return response.status(200).json({ msg: "Create user succeeded" });
+            if (result === true) {
+                return response.status(201).json({ msg: "Create user succeeded" });
             }
-            else {
-                return response.status(400).json({ msg: "User already exists" });
+            else if (result === false) {
+                return response.status(200).json({ msg: "User already exists" });
             }
         }
         catch (err) {

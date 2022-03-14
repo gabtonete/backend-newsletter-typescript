@@ -9,23 +9,26 @@ class CreateUserUseCase {
     }
     async execute(data) {
         const userAlreadyExists = await this.userRepository.findByEmail(data.email);
-        if (userAlreadyExists) {
-            return ('User already exists');
+        if (userAlreadyExists === true) {
+            return false;
         }
-        const user = new UserEntity_1.UserEntity(data.name, data.email);
-        await this.userRepository.save(user);
-        await this.mailProvider.sendMail({
-            to: {
-                name: data.name,
-                address: data.email,
-            },
-            from: {
-                name: 'Gabriel Tonete',
-                address: 'gabtonsmtp@gmail.com',
-            },
-            subject: 'Welcome to Fake Newsletter!',
-            body: '<a href="https://github.com/gabtonete">Acesse aqui meu github!</a>'
-        });
+        else {
+            const user = new UserEntity_1.UserEntity(data.name, data.email);
+            await this.userRepository.save(user);
+            await this.mailProvider.sendMail({
+                to: {
+                    name: data.name,
+                    address: data.email,
+                },
+                from: {
+                    name: 'Gabriel Tonete',
+                    address: 'gabtonsmtp@gmail.com',
+                },
+                subject: 'Welcome to Fake Newsletter!',
+                body: '<a href="https://github.com/gabtonete">Acesse aqui meu github!</a>'
+            });
+            return true;
+        }
     }
 }
 exports.CreateUserUseCase = CreateUserUseCase;
