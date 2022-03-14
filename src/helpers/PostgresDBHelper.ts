@@ -14,8 +14,9 @@ export const synchronize = async () => {
 const five_minutes = 60000 * 5;
 const now = new Date();
 
-function dropAllSchemas () {
-    sequelize.drop();
+async function dropAllSchemas () {
+    await sequelize.drop();
+    await sequelize.sync();
     console.log(`${now.getDate()}/${now.getMonth() +1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} - Deleting schemas...`)
 }
 
