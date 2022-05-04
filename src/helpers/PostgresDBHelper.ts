@@ -8,7 +8,6 @@ export const sequelize = new Sequelize( DB_USER, DB_NAME, DB_PASS, {
 
 export const synchronize = async () => {
     await sequelize.sync();
-
 }
 
 const five_minutes = 60000 * 5;
